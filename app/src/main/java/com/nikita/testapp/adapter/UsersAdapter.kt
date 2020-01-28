@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.nikita.testapp.adapter.viewHolder.UserViewHolder
 import com.nikita.testapp.db.model.UserModel.UserModel
 
-class UsersAdapter : PagedListAdapter<UserModel, UserViewHolder>(DIFF) {
+class UsersAdapter(val onSelect: (UserModel) -> Unit) : PagedListAdapter<UserModel, UserViewHolder>(DIFF) {
 
     companion object {
         val DIFF = object : DiffUtil.ItemCallback<UserModel>() {
@@ -34,6 +34,9 @@ class UsersAdapter : PagedListAdapter<UserModel, UserViewHolder>(DIFF) {
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         getItem(position)?.let {
             holder.setData(it)
+            holder.itemView.setOnClickListener { v ->
+                onSelect.invoke(it)
+            }
         }
     }
 
