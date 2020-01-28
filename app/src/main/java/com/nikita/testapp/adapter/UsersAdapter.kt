@@ -32,7 +32,9 @@ class UsersAdapter : PagedListAdapter<UserModel, UserViewHolder>(DIFF) {
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        getItem(position)?.let {
+            holder.setData(it)
+        }
     }
 
 }
