@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +24,11 @@ class HomeFragment : Fragment(), Observer<PagedList<UserModel>> {
         ViewModelProviders.of(this).get(HomeViewModel::class.java)
     }
 
-    private val adapter = UsersAdapter()
+    private val adapter = UsersAdapter {
+        val args = Bundle()
+        args.putString("id", it.id)
+        Navigation.findNavController(home_list).navigate(R.id.action_homeFragment_to_userFragment, args)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
