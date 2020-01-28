@@ -51,6 +51,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$life_cycle"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_cycle"
     implementation "androidx.lifecycle:lifecycle-extensions:$life_cycle"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.lifecycle:lifecycle-compiler:$life_cycle"
 
     // Room
