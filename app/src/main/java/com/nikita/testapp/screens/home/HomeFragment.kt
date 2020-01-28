@@ -6,20 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.nikita.testapp.R
+import com.nikita.testapp.adapter.UsersAdapter
+import com.nikita.testapp.db.model.UserModel.UserModel
 import com.nikita.testapp.screens.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), Observer<PagedList<UserModel>> {
 
     private val mViewModel: HomeViewModel by lazy {
         ViewModelProviders.of(this).get(HomeViewModel::class.java)
     }
+
+    private val adapter = UsersAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +41,14 @@ class HomeFragment : Fragment() {
             orientation = RecyclerView.VERTICAL
         }
 
+        home_list.adapter = adapter
 
+        mViewModel.usersList.observe(this, this)
+
+    }
+
+    override fun onChanged(data: PagedList<UserModel>?) {
+        adapter.submitList(data)
     }
 
 
