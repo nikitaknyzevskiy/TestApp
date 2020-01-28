@@ -10,7 +10,7 @@ class HomeViewModel : ViewModel() {
 
     private val userRepository = UserRepository()
 
-    private val usersList: LiveData<PagedList<UserModel>> by lazy {
+    val usersList: LiveData<PagedList<UserModel>> by lazy {
         userRepository.userListPaged()
     }
 
