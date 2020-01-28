@@ -22,7 +22,6 @@ class UserRepository {
         DataBaseBuilder.db.userDao()
     }
 
-
     fun userListPaged(): LiveData<PagedList<UserModel>> {
 
         runBlocking {
@@ -30,6 +29,14 @@ class UserRepository {
         }
 
         return userDao.usersPaged().toLiveData(10)
+    }
+
+    fun userLive(id: String): LiveData<UserModel> {
+        runBlocking {
+            load()
+        }
+
+        return userDao.user(id)
     }
 
     private suspend fun load() = withContext(Dispatchers.IO + errorHandler) {
