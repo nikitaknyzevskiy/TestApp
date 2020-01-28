@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nikita.testapp.R
 import com.nikita.testapp.adapter.UsersAdapter
 import com.nikita.testapp.db.model.UserModel.UserModel
-import com.nikita.testapp.screens.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), Observer<PagedList<UserModel>> {

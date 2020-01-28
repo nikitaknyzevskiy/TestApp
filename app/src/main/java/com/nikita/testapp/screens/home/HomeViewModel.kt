@@ -1,4 +1,4 @@
-package com.nikita.testapp.screens
+package com.nikita.testapp.screens.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
