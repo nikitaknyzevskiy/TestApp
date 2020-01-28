@@ -5,7 +5,7 @@ import com.nikita.testapp.db.model.ext.IdModel
 import com.nikita.testapp.db.model.ext.LargeModel
 import com.nikita.testapp.db.model.ext.NameModel
 
-data class UserModel (
+data class UserDto (
 
     val id: IdModel,
 
