@@ -7,7 +7,7 @@ object UserConvector {
 
     fun convert(userDto: UserDto): UserModel {
         return UserModel(
-            userDto.id.value,
+            userDto.toString(),
             userDto.gender,
             userDto.name,
             userDto.email,
