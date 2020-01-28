@@ -6,10 +6,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RestBuilder {
 
-    private var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://randomuser.me/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    private val retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl("https://randomuser.me/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 
     val rest: ApiService by lazy {
         retrofit.create(ApiService::class.java)
